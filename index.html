@@ -7,16 +7,20 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Video Background: Use mp4 format, some Chrome versions need playsinline and preload -->
-  <video autoplay muted loop playsinline id="bgVideo" preload="auto">
-    <source src="background.mp4" type="video/mp4" />
+  <!-- Video Background -->
+  <video autoplay muted loop id="bgVideo" playsinline>
+    <source src="background.mov" type="video/quicktime" />
+    <source src="IMG_9051.mp4" type="video/quicktime" />
     Your browser does not support the video tag.
   </video>
+
+  <!-- Page Content -->
   <div id="overlay">
     <div id="line1">You have</div>
     <div id="line2"></div>
     <div id="line3">in Great Lakes Institute of Management, Chennai.</div>
   </div>
+
   <script src="countdown.js"></script>
   <script src="backgroundLogic.js"></script>
 </body>
