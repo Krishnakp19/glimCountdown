@@ -2,37 +2,31 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100vh;
-  width: 100vw;
   overflow: hidden;
-  font-family: 'Pacifico', cursive, Arial, sans-serif;
+  font-family: 'Merriweather', cursive, Arial, sans-serif;
 }
 
 #bgVideo {
   position: fixed;
-  top: 0;
-  left: 0;
-  min-width: 100vw;
-  min-height: 100vh;
-  width: auto;
-  height: auto;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
   z-index: -1;
-  background: #333;
 }
 
 #overlay {
-  position: absolute;
-  left: 50%;
-  top: 60%; /* move lower down */
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.58); /* more transparent */
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
   padding: 40px 60px;
-  border-radius: 22px;
-  box-shadow: 0 0 18px rgba(0,0,0,0.22);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
   text-align: center;
   max-width: 80vw;
   min-width: 270px;
   line-height: 1.5;
+  margin: auto;
+  top: 20vh;
 }
 
 #line1, #line3 {
