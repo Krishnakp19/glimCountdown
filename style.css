@@ -1,80 +1,193 @@
 body, html {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  overflow: hidden;
-  font-family: 'Merriweather', cursive, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Merriweather', cursive, Arial, sans-serif;
 }
 
 #bgVideo {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
 }
 
 /* Position the overlay at slightly lower center */
 #overlay {
-  position: absolute;
-  left: 50%;
-  top: 55%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.55); /* More transparent for better background visibility */
-  padding: 40px 60px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  text-align: center;
-  max-width: 80vw;
-  min-width: 270px;
-  line-height: 1.5;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.55);
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 80vw;
+    min-width: 270px;
+    line-height: 1.5;
 }
 
 /* Style for countdown text */
 #line1, #line3 {
-  font-size: 1.8em;
-  color: #1976d2;
+    font-size: 1.8em;
+    color: #1976d2;
 }
 
 /* Style for countdown timer in red and bold with specific font */
 #line2 {
-  font-family: 'Orbitron', monospace, Arial, sans-serif;
-  color: red;
-  font-weight: 700;
-  font-size: 2.2em;
-  margin: 10px 0 10px 0;
+    font-family: 'Orbitron', monospace, Arial, sans-serif;
+    color: red;
+    font-weight: 700;
+    font-size: 2.2em;
+    margin: 10px 0 10px 0;
 }
 
 /* Style for corner video container */
 #cornerVideoContainer {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 320px;
-  height: 180px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 16px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.22);
-  overflow: hidden;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    height: 180px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.22);
+    overflow: hidden;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Corner video style */
 #cornerVideo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* People of the Day - Now at top of countdown */
+#random-images-container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(52, 152, 219, 0.5);
+}
+
+/* Main title - People of the Day */
+#random-images-container::before {
+    content: 'People of the Day';
+    display: block;
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Bottom message about Chatterbox */
+#random-images-container::after {
+    content: 'Bring in some lore about these people, post it in Chatterbox Instagram page';
+    display: block;
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #555;
+    text-align: center;
+    line-height: 1.4;
+    font-style: italic;
+    max-width: 300px;
+}
+
+.image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+/* Passport-size photo with top-half crop - Side by side layout */
+.profile-image {
+    width: 100px;
+    height: 133px;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.image-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    padding: 4px 8px;
+    background: rgba(236, 240, 241, 0.9);
+    border-radius: 5px;
+    word-wrap: break-word;
+    max-width: 100px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
-  #overlay { padding: 15px 5px; max-width: 98vw; }
-  #line1, #line3 { font-size: 1.1em; }
-  #line2 { font-size: 1.4em; }
-  #cornerVideoContainer { width: 160px; height: 90px; bottom: 10px; right: 10px; }
+    #overlay { 
+        padding: 60px 15px 55px 15px; 
+        max-width: 98vw; 
+    }
+    #line1, #line3 { 
+        font-size: 1.1em; 
+    }
+    #line2 { 
+        font-size: 1.4em; 
+    }
+    #cornerVideoContainer { 
+        width: 160px; 
+        height: 90px; 
+        bottom: 10px; 
+        right: 10px; 
+    }
+    #random-images-container {
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .profile-image {
+        width: 70px;
+        height: 93px;
+    }
+    .image-name {
+        font-size: 9px;
+        max-width: 70px;
+    }
+    #random-images-container::before {
+        font-size: 14px;
+        top: -30px;
+    }
+    #random-images-container::after {
+        font-size: 8px;
+        bottom: -40px;
+        max-width: 200px;
+    }
 }
