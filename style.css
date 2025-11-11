@@ -3,7 +3,7 @@ body, html {
   padding: 0;
   height: 100vh;
   overflow: hidden;
-  font-family: 'Pacifico', cursive, Arial, sans-serif;
+  font-family: 'Merriweather', cursive, Arial, sans-serif;
 }
 
 #bgVideo {
@@ -15,12 +15,13 @@ body, html {
   z-index: -1;
 }
 
+/* Position the overlay at slightly lower center */
 #overlay {
   position: absolute;
   left: 50%;
-  top: 53%; /* tweak this value for desired spacing */
+  top: 55%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.55); /* More transparent for better background visibility */
   padding: 40px 60px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
@@ -30,11 +31,13 @@ body, html {
   line-height: 1.5;
 }
 
+/* Style for countdown text */
 #line1, #line3 {
   font-size: 1.8em;
   color: #1976d2;
 }
 
+/* Style for countdown timer in red and bold with specific font */
 #line2 {
   font-family: 'Orbitron', monospace, Arial, sans-serif;
   color: red;
@@ -43,8 +46,35 @@ body, html {
   margin: 10px 0 10px 0;
 }
 
+/* Style for corner video container */
+#cornerVideoContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  height: 180px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 16px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.22);
+  overflow: hidden;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Corner video style */
+#cornerVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 600px) {
   #overlay { padding: 15px 5px; max-width: 98vw; }
   #line1, #line3 { font-size: 1.1em; }
   #line2 { font-size: 1.4em; }
+  #cornerVideoContainer { width: 160px; height: 90px; bottom: 10px; right: 10px; }
 }
