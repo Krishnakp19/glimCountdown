@@ -8,44 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Visitor Counter Style */
-        #visitor-counter {
-            position: fixed;
-            bottom: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 10px 15px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.25);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        #visitor-counter img {
-            height: 20px;
-            display: block;
-        }
-        
-        @media (max-width: 600px) {
-            #visitor-counter {
-                bottom: 10px;
-                left: 10px;
-                padding: 8px 12px;
-            }
-            #visitor-counter img {
-                height: 18px;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Background Video -->
     <video id="bgVideo" autoplay loop muted playsinline>
         <source src="Static/background.mp4" type="video/mp4">
     </video>
+
+    <!-- Task Ticker at Top -->
+    <div id="task-ticker">
+        <div id="ticker-text">Loading task...</div>
+    </div>
 
     <!-- Countdown Overlay with People of the Day on Top (Center) -->
     <div id="overlay">
@@ -70,13 +43,11 @@
         <img src="https://hits.sh/krishnakp19.github.io/glimCountdown.svg?style=flat&label=Visitors&color=1976d2&labelColor=2c3e50" 
              alt="Visitor count">
     </div>
-    
+
     <!-- Scripts -->
     <script src="countdown.js"></script>
     <script src="imageSelector.js"></script>
     <script src="videoAnimation.js"></script>
+    <script src="taskTicker.js"></script>
 </body>
 </html>
-
-
-
