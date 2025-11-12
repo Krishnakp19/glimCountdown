@@ -5,17 +5,6 @@
     const videoWidth = 120;
     const videoHeight = 180;
     
-    // Starting position
-    let x = 20;
-    let y = 20;
-    
-    // Velocity (speed and direction)
-    let velocityX = 2;
-    let velocityY = 1.5;
-    
-    // Animation frame rate
-    const FPS = 60;
-    
     // Get viewport dimensions
     function getViewportSize() {
         return {
@@ -23,6 +12,22 @@
             height: window.innerHeight
         };
     }
+    
+    // Random starting position
+    const viewport = getViewportSize();
+    let x = Math.floor(Math.random() * (viewport.width - videoWidth));
+    let y = Math.floor(Math.random() * (viewport.height - videoHeight));
+    
+    // Random velocity direction (but consistent speed)
+    const speed = 2;
+    const angle = Math.random() * Math.PI * 2; // Random angle
+    let velocityX = Math.cos(angle) * speed;
+    let velocityY = Math.sin(angle) * speed;
+    
+    console.log(`🎬 Video starting at position (${Math.floor(x)}, ${Math.floor(y)}) with velocity (${velocityX.toFixed(2)}, ${velocityY.toFixed(2)})`);
+    
+    // Animation frame rate
+    const FPS = 60;
     
     // Update position
     function animate() {
