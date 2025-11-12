@@ -47,104 +47,48 @@ body, html {
     }
 }
 
-/* Position the overlay at slightly lower center */
-#overlay {
+/* People of the Day Section - OUTSIDE overlay */
+#people-of-day-section {
     position: absolute;
     left: 50%;
-    top: 55%;
+    top: 35%;
     transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.55);
-    padding: 40px 60px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
     text-align: center;
-    max-width: 80vw;
-    min-width: 270px;
-    line-height: 1.5;
+    z-index: 5;
 }
 
-/* Style for countdown text */
-#line1, #line3 {
-    font-size: 1.8em;
-    color: #1976d2;
+#people-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Style for countdown timer in red and bold with specific font */
-#line2 {
-    font-family: 'Orbitron', monospace, Arial, sans-serif;
-    color: red;
-    font-weight: 700;
-    font-size: 2.2em;
-    margin: 10px 0 10px 0;
-}
-
-/* Style for corner video container - Compact and bouncing - PORTRAIT */
-#cornerVideoContainer {
-    position: fixed;
-    width: 120px;
-    height: 180px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 12px;
-    box-shadow: 0 0 8px rgba(0,0,0,0.22);
-    overflow: hidden;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Corner video style - CONTAIN to show full video without cropping */
-#cornerVideo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 12px;
-}
-
-/* People of the Day - Title above, message below */
 #random-images-container {
-    position: relative;
     display: flex;
     flex-direction: row;
     gap: 15px;
     justify-content: center;
-    align-items: flex-start;
-    margin: 40px auto 50px auto;
-    padding: 5px 15px;
-    max-width: 80vw;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
-/* Main title - People of the Day - ABOVE the images */
-#random-images-container::before {
-    content: 'People of the Day';
-    display: block;
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 18px;
-    font-weight: bold;
+#people-message {
+    font-size: 11px;
     color: #2c3e50;
-    text-align: center;
-    white-space: nowrap;
-    width: max-content;
-}
-
-/* Bottom message about Chatterbox - BELOW the images */
-#random-images-container::after {
-    content: 'Bring in some lore about these people, post it in Chatterbox Instagram page';
-    display: block;
-    position: absolute;
-    bottom: -45px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 10px;
-    color: #555;
-    text-align: center;
-    line-height: 1.4;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 6px 15px;
+    border-radius: 6px;
     font-style: italic;
-    max-width: 300px;
-    width: max-content;
+    max-width: 320px;
+    margin: 0 auto;
+    line-height: 1.4;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .image-card {
@@ -152,9 +96,12 @@ body, html {
     flex-direction: column;
     align-items: center;
     gap: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Passport-size photo with top-half crop - Side by side layout */
 .profile-image {
     width: 90px;
     height: 120px;
@@ -183,14 +130,68 @@ body, html {
     max-width: 90px;
 }
 
-#music-toggle {
+/* Position the countdown overlay */
+#overlay {
+    position: absolute;
+    left: 50%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.55);
+    padding: 40px 60px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+    max-width: 80vw;
+    min-width: 270px;
+    line-height: 1.5;
+}
+
+#line1, #line3 {
+    font-size: 1.8em;
+    color: #1976d2;
+}
+
+#line2 {
+    font-family: 'Orbitron', monospace, Arial, sans-serif;
+    color: red;
+    font-weight: 700;
+    font-size: 2.2em;
+    margin: 10px 0 10px 0;
+}
+
+#cornerVideoContainer {
+    position: fixed;
+    width: 120px;
+    height: 180px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.22);
+    overflow: hidden;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#cornerVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Control Buttons Container (Bottom Left) */
+#control-buttons {
     position: fixed;
     bottom: 55px;
     left: 15px;
     z-index: 1100;
+    display: flex;
+    gap: 10px;
 }
 
-#musicToggleBtn {
+#musicToggleBtn,
+#confettiBtn {
     background-color: #1976d2;
     border: none;
     border-radius: 8px;
@@ -200,14 +201,24 @@ body, html {
     font-size: 16px;
     font-weight: bold;
     box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-#musicToggleBtn:hover {
+#musicToggleBtn:hover,
+#confettiBtn:hover {
     background-color: #0d47a1;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Visitor Counter Style */
+#confettiBtn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+#confettiBtn:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #63398b 100%);
+}
+
 #visitor-counter {
     position: fixed;
     bottom: 15px;
@@ -227,18 +238,104 @@ body, html {
     display: block;
 }
 
-/* Responsive adjustments */
+/* Birthday Section - Bottom Right */
+#birthday-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    z-index: 50;
+    max-width: 220px;
+    display: none;
+}
+
+#birthday-title {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#birthday-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.birthday-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cake-icon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 20px;
+}
+
+.birthday-image {
+    width: 80px;
+    height: 107px;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.birthday-name {
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    max-width: 80px;
+    word-wrap: break-word;
+}
+
+/* Responsive */
 @media (max-width: 600px) {
     #task-ticker {
         padding: 8px 0;
     }
-    
     #ticker-text {
         font-size: 13px;
     }
-    
+    #people-of-day-section {
+        top: 30%;
+    }
+    #people-title {
+        font-size: 16px;
+        padding: 6px 15px;
+    }
+    #people-message {
+        font-size: 9px;
+        max-width: 240px;
+    }
+    .profile-image {
+        width: 70px;
+        height: 93px;
+    }
+    .image-name {
+        font-size: 9px;
+        max-width: 70px;
+    }
     #overlay { 
-        padding: 35px 20px 30px 20px; 
+        top: 65%;
+        padding: 30px 20px;
         max-width: 90vw; 
     }
     #line1, #line3 { 
@@ -251,33 +348,14 @@ body, html {
         width: 90px; 
         height: 135px; 
     }
-    #random-images-container {
-        gap: 10px;
-        margin: 30px auto 45px auto;
+    #control-buttons {
+        flex-direction: column;
+        gap: 5px;
+        bottom: 50px;
     }
-    .profile-image {
-        width: 70px;
-        height: 93px;
-    }
-    .image-name {
-        font-size: 9px;
-        max-width: 70px;
-    }
-    #random-images-container::before {
+    #musicToggleBtn,
+    #confettiBtn {
+        padding: 6px 10px;
         font-size: 14px;
-        top: -25px;
-    }
-    #random-images-container::after {
-        font-size: 8px;
-        bottom: -40px;
-        max-width: 220px;
-    }
-    #visitor-counter {
-        bottom: 10px;
-        left: 10px;
-        padding: 8px 12px;
-    }
-    #visitor-counter img {
-        height: 18px;
     }
 }
