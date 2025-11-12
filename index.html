@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>GLIM Chennai Countdown</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <!-- Background Video -->
     <video id="bgVideo" autoplay loop muted playsinline>
-        <source src="Static/background.mp4" type="video/mp4">
+        <source src="Static/background.mp4" type="video/mp4" />
     </video>
 
     <!-- Task Ticker at Top -->
@@ -24,7 +24,7 @@
     <div id="overlay">
         <!-- Random Images Container (Top of countdown) -->
         <div id="random-images-container"></div>
-        
+
         <!-- Countdown Section -->
         <div id="line1">You have got</div>
         <div id="line2">Loading...</div>
@@ -34,15 +34,23 @@
     <!-- Corner Video (Bouncing around screen) -->
     <div id="cornerVideoContainer">
         <video id="cornerVideo" autoplay loop muted playsinline>
-            <source src="Static/Roshan.mp4" type="video/mp4">
+            <source src="Static/Roshan.mp4" type="video/mp4" />
         </video>
     </div>
 
     <!-- Visitor Counter with HITS Badge -->
     <div id="visitor-counter">
-        <img src="https://hits.sh/krishnakp19.github.io/glimCountdown.svg?style=flat&label=Visitors&color=1976d2&labelColor=2c3e50" 
-             alt="Visitor count">
+        <img
+            src="https://hits.sh/krishnakp19.github.io/glimCountdown.svg?style=flat&label=Visitors&color=1976d2&labelColor=2c3e50"
+            alt="Visitor count"
+        />
     </div>
+
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="Static/background-music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+    </audio>
 
     <!-- Scripts -->
     <script src="countdown.js"></script>
