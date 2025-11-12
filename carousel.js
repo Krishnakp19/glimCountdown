@@ -74,10 +74,10 @@ function createCarousel(images) {
     
     track.appendChild(fragment);
     
-    // Calculate duration
+    // Calculate duration - FASTER SPEED
     const itemWidth = 95; // 80px + 15px gap
     const totalWidth = images.length * itemWidth;
-    const duration = Math.max(30, totalWidth / 20); // Faster speed
+    const duration = Math.max(20, totalWidth / 40); // CHANGED: Divide by 40 instead of 20 = 2x faster
     
     console.log(`✓ Animation duration: ${duration}s for ${images.length} images`);
     
@@ -88,7 +88,7 @@ function createCarousel(images) {
     const randomStart = Math.floor(Math.random() * images.length);
     track.style.setProperty('--carousel-start', `${-(randomStart * itemWidth)}px`);
     
-    // IMPORTANT: Force animation start with delay
+    // Force animation start with delay
     setTimeout(() => {
         track.classList.add('carousel-animate');
         console.log('✓ Carousel animation started');
