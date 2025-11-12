@@ -27,9 +27,6 @@ async function loadCarouselImages() {
         
         // Create carousel
         createCarousel(shuffledImages);
-        
-        // Start infinite scroll animation
-        startInfiniteScroll();
     } catch (error) {
         console.error('✗ Error loading carousel images:', error);
     }
@@ -43,8 +40,8 @@ function createCarousel(images) {
         return;
     }
     
-    // Create multiple copies for truly seamless infinite loop (5 copies)
-    const allImages = [...images, ...images, ...images, ...images, ...images];
+    // Create circular list - triple the images for smooth infinite loop
+    const allImages = [...images, ...images, ...images];
     
     allImages.forEach(imageName => {
         const imgWrapper = document.createElement('div');
@@ -64,59 +61,13 @@ function createCarousel(images) {
         track.appendChild(imgWrapper);
     });
     
-    // Start from random position
+    // Start from random position in the carousel
     const randomOffset = Math.floor(Math.random() * images.length);
     const itemWidth = 80 + 15; // width + gap
-    window.carouselPosition = -(randomOffset * itemWidth);
+    const startPosition = -(randomOffset * itemWidth);
+    track.style.transform = `translateX(${startPosition}px)`;
     
-    track.style.transform = `translateX(${window.carouselPosition}px)`;
-    
-    console.log(`✓ Carousel created with ${allImages.length} images (${images.length} unique), starting at position ${randomOffset}`);
-}
-
-// Infinite scroll using JavaScript animation
-function startInfiniteScroll() {
-    const track = document.getElementById('carouselTrack');
-    if (!track) return;
-    
-    const itemWidth = 80 + 15; // width + gap
-    const speed = 0.5; // pixels per frame (adjust for speed: higher = faster)
-    
-    let isPaused = false;
-    
-    // Pause on hover
-    track.parentElement.addEventListener('mouseenter', () => {
-        isPaused = true;
-    });
-    
-    track.parentElement.addEventListener('mouseleave', () => {
-        isPaused = false;
-    });
-    
-    function animate() {
-        if (!isPaused) {
-            // Move left continuously
-            window.carouselPosition -= speed;
-            
-            // Get total width of one set of images
-            const totalItems = track.children.length;
-            const oneSetWidth = (totalItems / 5) * itemWidth; // 5 copies, so divide by 5
-            
-            // When we've scrolled past one full set, reset seamlessly
-            if (Math.abs(window.carouselPosition) >= oneSetWidth) {
-                window.carouselPosition += oneSetWidth;
-            }
-            
-            track.style.transform = `translateX(${window.carouselPosition}px)`;
-        }
-        
-        requestAnimationFrame(animate);
-    }
-    
-    // Start animation
-    requestAnimationFrame(animate);
-    
-    console.log('🎬 Infinite scroll animation started');
+    console.log(`✓ Carousel created with ${allImages.length} images, starting at position ${randomOffset}`);
 }
 
 // Initialize carousel on page load
