@@ -21,18 +21,18 @@ function updateProgressBar() {
     
     if (progressFill && progressText) {
         progressFill.style.width = percentage.toFixed(2) + '%';
-        progressText.textContent = percentage.toFixed(1) + '% Complete';
+        progressText.textContent = percentage.toFixed(1) + '% Completed';
         
         console.log(`📊 Progress: ${percentage.toFixed(2)}% | Start: ${START_DATE.toDateString()} | End: ${END_DATE.toDateString()}`);
     }
     
     // Log milestone achievements
     if (percentage >= 25 && percentage < 25.1) {
-        console.log('🎯 Milestone: 25% Complete!');
+        console.log('🎯 Milestone: 25% Completed!');
     } else if (percentage >= 50 && percentage < 50.1) {
-        console.log('🎯 Milestone: Halfway there! 50% Complete!');
+        console.log('🎯 Milestone: Halfway there! 50% Completed!');
     } else if (percentage >= 75 && percentage < 75.1) {
-        console.log('🎯 Milestone: 75% Complete!');
+        console.log('🎯 Milestone: 75% Completed!');
     } else if (percentage >= 100) {
         console.log('🎉 GLIM Chennai journey complete!');
         progressText.textContent = '100% - Journey Complete! 🎓';
