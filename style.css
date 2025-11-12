@@ -15,7 +15,6 @@ body, html {
     z-index: -1;
 }
 
-/* Task Ticker - Running text at top */
 #task-ticker {
     position: fixed;
     top: 0;
@@ -37,22 +36,107 @@ body, html {
     padding-left: 100%;
     animation: scroll-left 35s linear infinite;
 }
-
 @keyframes scroll-left {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
 }
 
-/* Position the overlay at slightly lower center */
+/* People of the Day Overlay */
+#people-overlay {
+    position: absolute;
+    left: 50%;
+    top: 90px; /* Below top ticker */
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.87);
+    padding: 24px 40px 18px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 13px rgba(60,60,60,0.14);
+    text-align: center;
+    max-width: 860px;
+    width: auto;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#people-title {
+    font-size: 2em;
+    font-weight: 700;
+    color: #1976d2;
+    font-family: 'Orbitron', 'Merriweather', Arial, sans-serif;
+    margin-bottom: 16px;
+    letter-spacing: 0.06em;
+}
+
+#random-images-container {
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 0 8px 0;
+    padding: 0;
+    border: none;
+}
+
+.image-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 150px;
+    max-width: 180px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 125px;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2.5px solid #3498db;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.profile-image:hover {
+    transform: scale(1.07);
+}
+
+.image-name {
+    font-size: 1.13em;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    padding: 5px 10px;
+    background: rgba(236, 240, 241, 0.96);
+    border-radius: 4px;
+    white-space: nowrap; /* Prevent line wrapping! */
+    word-break: break-all;
+    max-width: 100%;
+}
+
+#chatterbox-msg {
+    font-family: 'Pacifico', cursive, Arial, sans-serif;
+    color: #ff6f00;
+    font-size: 1.17em;
+    letter-spacing: 0.03em;
+    margin: 16px 0 0 0;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.6);
+    white-space: nowrap; /* Prevent wrapping */
+    display: block;
+    text-align: center;
+}
+
+/* Countdown Overlay Further Down */
 #overlay {
     position: absolute;
     left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%);
+    top: 360px; /* Push lower to make space for people overlay */
+    transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.55);
     padding: 40px 60px;
     border-radius: 12px;
@@ -61,15 +145,14 @@ body, html {
     max-width: 80vw;
     min-width: 270px;
     line-height: 1.5;
+    z-index: 300;
 }
 
-/* Style for countdown text */
 #line1, #line3 {
     font-size: 1.8em;
     color: #1976d2;
 }
 
-/* Style for countdown timer in red and bold with specific font */
 #line2 {
     font-family: 'Orbitron', monospace, Arial, sans-serif;
     color: red;
@@ -78,7 +161,6 @@ body, html {
     margin: 10px 0 10px 0;
 }
 
-/* Style for corner video container - Compact and bouncing - PORTRAIT */
 #cornerVideoContainer {
     position: fixed;
     width: 120px;
@@ -93,7 +175,6 @@ body, html {
     justify-content: center;
 }
 
-/* Corner video style - CONTAIN to show full video without cropping */
 #cornerVideo {
     width: 100%;
     height: 100%;
@@ -101,90 +182,9 @@ body, html {
     border-radius: 12px;
 }
 
-/* People of the Day - Now at top of countdown */
-#random-images-container {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    justify-content: center;
-    align-items: flex-start;
-    margin: 15px auto 25px auto; /* Center horizontally + space on top/bottom */
-    max-width: 80vw;
-}
-
-/* Main title - People of the Day */
-#random-images-container::before {
-    content: 'People of the Day';
-    display: block;
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 16px;
-    font-weight: bold;
-    color: #2c3e50;
-    text-align: center;
-    white-space: nowrap;
-    width: max-content;
-}
-
-/* Bottom message about Chatterbox */
-#random-images-container::after {
-    content: 'Bring in some lore about these people, post it in Chatterbox Instagram page';
-    display: block;
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 9px;
-    color: #555;
-    text-align: center;
-    line-height: 1.3;
-    font-style: italic;
-    max-width: 280px;
-    width: max-content;
-}
-
-.image-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Passport-size photo with top-half crop - Side by side layout */
-.profile-image {
-    width: 90px;
-    height: 120px;
-    object-fit: cover;
-    object-position: center 20%;
-    border: 2px solid #3498db;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    display: block;
-}
-
-.profile-image:hover {
-    transform: scale(1.05);
-}
-
-.image-name {
-    font-size: 11px;
-    font-weight: 600;
-    color: #2c3e50;
-    text-align: center;
-    padding: 3px 6px;
-    background: rgba(236, 240, 241, 0.9);
-    border-radius: 4px;
-    word-wrap: break-word;
-    max-width: 90px;
-}
-
 #music-toggle {
   position: fixed;
-  bottom: 55px; /* Positioned above visitor counter */
+  bottom: 55px;
   left: 15px;
   z-index: 1100;
 }
@@ -226,58 +226,23 @@ body, html {
     display: block;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
-    #task-ticker {
-        padding: 8px 0;
-    }
-    
-    #ticker-text {
-        font-size: 13px;
-    }
-    
-    #overlay { 
-        padding: 35px 20px 30px 20px; 
-        max-width: 90vw; 
-    }
-    #line1, #line3 { 
-        font-size: 1.2em; 
-    }
-    #line2 { 
-        font-size: 1.5em; 
-    }
-    #cornerVideoContainer { 
-        width: 90px; 
-        height: 135px; 
-    }
-    #random-images-container {
-        gap: 10px;
-        margin-bottom: 15px;
-        margin-top: 25px;
-    }
-    .profile-image {
-        width: 70px;
-        height: 93px;
-    }
-    .image-name {
-        font-size: 9px;
-        max-width: 70px;
-    }
-    #random-images-container::before {
-        font-size: 13px;
-        top: -20px;
-    }
-    #random-images-container::after {
-        font-size: 8px;
-        bottom: -35px;
-        max-width: 180px;
-    }
+    #task-ticker { padding: 8px 0; }
+    #ticker-text { font-size: 13px; }
+    #people-overlay { padding: 10px 6px 6px 6px; max-width: 99vw; }
+    #people-title { font-size: 1.2em; }
+    #random-images-container { gap: 8px; }
+    .profile-image { width: 65px; height: 83px; }
+    .image-name { font-size: 0.98em; max-width: 70px; }
+    #chatterbox-msg { font-size: 0.96em; }
+    #overlay { padding: 29px 10px; max-width: 95vw; top: 285px; }
+    #line1, #line3 { font-size: 1.1em; }
+    #line2 { font-size: 1.4em; }
+    #cornerVideoContainer { width: 90px; height: 135px; }
     #visitor-counter {
         bottom: 10px;
         left: 10px;
         padding: 8px 12px;
     }
-    #visitor-counter img {
-        height: 18px;
-    }
+    #visitor-counter img { height: 18px; }
 }
