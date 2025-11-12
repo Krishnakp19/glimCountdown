@@ -47,7 +47,7 @@ body, html {
     }
 }
 
-/* Image Carousel - Below Task Ticker (JavaScript-based infinite scroll) */
+/* Image Carousel - GPU Accelerated & Optimized */
 .carousel-container {
     position: fixed;
     top: 50px;
@@ -59,27 +59,51 @@ body, html {
     backdrop-filter: blur(5px);
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    contain: layout style paint; /* CSS containment for better performance */
 }
 
 .carousel-track {
     display: flex;
     gap: 15px;
     padding: 10px 0;
-    /* No CSS animation - using JavaScript requestAnimationFrame instead */
+    /* GPU acceleration */
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+}
+
+.carousel-track.carousel-animate {
+    animation: carousel-scroll var(--carousel-duration, 50s) linear infinite;
+}
+
+@keyframes carousel-scroll {
+    0% {
+        transform: translate3d(var(--carousel-start, 0px), 0, 0);
+    }
+    100% {
+        transform: translate3d(calc(var(--carousel-start, 0px) - 50%), 0, 0);
+    }
+}
+
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
 }
 
 .carousel-item {
-    flex-shrink: 0;
+    flex: 0 0 auto;
     width: 80px;
     height: 100px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
+    /* GPU optimization */
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    contain: layout style paint;
 }
 
 .carousel-item:hover {
-    transform: scale(1.1);
+    transform: translate3d(0, 0, 0) scale(1.1);
     z-index: 10;
 }
 
@@ -88,9 +112,11 @@ body, html {
     height: 100%;
     object-fit: cover;
     object-position: center 20%;
+    /* Image optimization */
+    image-rendering: -webkit-optimize-contrast;
 }
 
-/* People of the Day Section - OUTSIDE overlay */
+/* People of the Day Section */
 #people-of-day-section {
     position: absolute;
     left: 50%;
@@ -173,7 +199,7 @@ body, html {
     max-width: 90px;
 }
 
-/* Position the countdown overlay */
+/* Countdown Overlay */
 #overlay {
     position: absolute;
     left: 50%;
@@ -202,7 +228,7 @@ body, html {
     margin: 10px 0 10px 0;
 }
 
-/* Progress Bar Styles */
+/* Progress Bar */
 .progress-container {
     margin-top: 25px;
     width: 100%;
@@ -260,6 +286,7 @@ body, html {
     text-align: center;
 }
 
+/* Corner Video (DVD Logo) */
 #cornerVideoContainer {
     position: fixed;
     width: 120px;
@@ -282,7 +309,7 @@ body, html {
     border-radius: 12px;
 }
 
-/* Control Buttons Container (Bottom Left) */
+/* Control Buttons */
 #control-buttons {
     position: fixed;
     bottom: 15px;
@@ -321,6 +348,7 @@ body, html {
     background: linear-gradient(135deg, #5568d3 0%, #63398b 100%);
 }
 
+/* Visitor Counter */
 #visitor-counter {
     position: fixed;
     bottom: 15px;
@@ -340,7 +368,7 @@ body, html {
     display: block;
 }
 
-/* Birthday Section - Bottom Right */
+/* Birthday Section */
 #birthday-container {
     position: fixed;
     bottom: 20px;
@@ -408,7 +436,7 @@ body, html {
     word-wrap: break-word;
 }
 
-/* Responsive adjustments */
+/* Responsive Design */
 @media (max-width: 600px) {
     #task-ticker {
         padding: 8px 0;
