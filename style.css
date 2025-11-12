@@ -205,6 +205,74 @@ body, html {
     display: block;
 }
 
+/* ========== BIRTHDAY SECTION ========== */
+#birthday-container {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    max-width: 220px;
+    display: none;
+}
+
+#birthday-title {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#birthday-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.birthday-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cake-icon {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 20px;
+}
+
+.birthday-image {
+    width: 80px;
+    height: 107px;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.birthday-name {
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+    text-align: center;
+    max-width: 80px;
+    word-wrap: break-word;
+}
+
 /* Responsive adjustments */
 @media (max-width: 600px) {
     #task-ticker {
@@ -258,5 +326,22 @@ body, html {
     }
     #visitor-counter img {
         height: 18px;
+    }
+    #birthday-container {
+        top: 50px;
+        right: 10px;
+        max-width: 140px;
+        padding: 10px;
+    }
+    #birthday-title {
+        font-size: 11px;
+    }
+    .birthday-image {
+        width: 60px;
+        height: 80px;
+    }
+    .birthday-name {
+        font-size: 8px;
+        max-width: 60px;
     }
 }
