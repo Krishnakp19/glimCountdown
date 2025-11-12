@@ -1,7 +1,7 @@
 const IMAGE_LIST_FILE = 'Static/images.txt';
 const IMAGE_FOLDER = 'Static/Profile Pics/';
 
-// Shuffle array using Fisher-Yates algorithm
+// Shuffle array
 function shuffleArray(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -11,24 +11,34 @@ function shuffleArray(array) {
     return shuffled;
 }
 
-// Load and populate carousel
+// Load carousel images
 async function loadCarouselImages() {
     try {
         const response = await fetch(IMAGE_LIST_FILE);
+        
+        if (!response.ok) {
+            throw new Error('Failed to load images');
+        }
+        
         const text = await response.text();
-        const images = text.split('\n')
-                          .map(line => line.trim())
-                          .filter(line => line.length > 0);
+        let images = text.split('\n')
+                        .map(line => line.trim())
+                        .filter(line => line.length > 0);
         
-        console.log(`✓ Loaded ${images.length} images for carousel`);
+        console.log(`✓ Loaded ${images.length} images`);
         
-        // Shuffle images for random order
+        // Limit to 30 images for better performance (randomly selected)
         const shuffledImages = shuffleArray(images);
+        const limitedImages = shuffledImages.slice(0, 30);
+        
+        console.log(`✓ Using ${limitedImages.length} images for performance`);
         
         // Create carousel
-        createCarousel(shuffledImages);
+        createCarousel(limitedImages);
+        
     } catch (error) {
-        console.error('✗ Error loading carousel images:', error);
+        console.error('✗ Error loading carousel:', error);
+        document.querySelector('.carousel-container').style.display = 'none';
     }
 }
 
@@ -40,38 +50,54 @@ function createCarousel(images) {
         return;
     }
     
-    // Create circular list - triple the images for smooth infinite loop
-    const allImages = [...images, ...images, ...images];
+    // Duplicate images twice for seamless loop
+    const allImages = [...images, ...images];
     
-    allImages.forEach(imageName => {
+    // Use DocumentFragment
+    const fragment = document.createDocumentFragment();
+    
+    allImages.forEach((imageName) => {
         const imgWrapper = document.createElement('div');
         imgWrapper.className = 'carousel-item';
         
-        const img = document.createElement('img');
+        const img = new Image();
         img.src = `${IMAGE_FOLDER}${imageName}`;
-        img.alt = imageName;
+        img.alt = '';
         img.loading = 'lazy';
+        img.decoding = 'async';
         
-        img.onerror = () => {
-            console.warn(`Failed to load: ${imageName}`);
-            imgWrapper.style.display = 'none';
-        };
+        img.onerror = () => imgWrapper.remove();
         
         imgWrapper.appendChild(img);
-        track.appendChild(imgWrapper);
+        fragment.appendChild(imgWrapper);
     });
     
-    // Start from random position in the carousel
-    const randomOffset = Math.floor(Math.random() * images.length);
-    const itemWidth = 80 + 15; // width + gap
-    const startPosition = -(randomOffset * itemWidth);
-    track.style.transform = `translateX(${startPosition}px)`;
+    track.appendChild(fragment);
     
-    console.log(`✓ Carousel created with ${allImages.length} images, starting at position ${randomOffset}`);
+    // Calculate duration
+    const itemWidth = 95; // 80px + 15px gap
+    const totalWidth = images.length * itemWidth;
+    const duration = Math.max(30, totalWidth / 20); // Faster speed
+    
+    console.log(`✓ Animation duration: ${duration}s for ${images.length} images`);
+    
+    // Set CSS variables
+    track.style.setProperty('--carousel-duration', `${duration}s`);
+    
+    // Random start position
+    const randomStart = Math.floor(Math.random() * images.length);
+    track.style.setProperty('--carousel-start', `${-(randomStart * itemWidth)}px`);
+    
+    // IMPORTANT: Force animation start with delay
+    setTimeout(() => {
+        track.classList.add('carousel-animate');
+        console.log('✓ Carousel animation started');
+    }, 100);
 }
 
-// Initialize carousel on page load
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎠 Initializing image carousel...');
+// Initialize
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadCarouselImages);
+} else {
     loadCarouselImages();
-});
+}
