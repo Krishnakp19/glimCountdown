@@ -101,7 +101,7 @@ body, html {
     border-radius: 12px;
 }
 
-/* People of the Day - Now at top of countdown */
+/* People of the Day - Title above, message below */
 #random-images-container {
     position: relative;
     display: flex;
@@ -109,24 +109,20 @@ body, html {
     gap: 15px;
     justify-content: center;
     align-items: flex-start;
-    margin-bottom: 25px;
-    margin-top: 30px;
-    padding-bottom: 20px;
-    padding-top: 5px;
-    border-bottom: 2px solid rgba(52, 152, 219, 0.5);
-    margin: 15px auto 25px auto; /* Center horizontally + space on top/bottom */
+    margin: 40px auto 50px auto;
+    padding: 5px 15px;
     max-width: 80vw;
 }
 
-/* Main title - People of the Day */
+/* Main title - People of the Day - ABOVE the images */
 #random-images-container::before {
     content: 'People of the Day';
     display: block;
     position: absolute;
-    top: -25px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: #2c3e50;
     text-align: center;
@@ -134,20 +130,20 @@ body, html {
     width: max-content;
 }
 
-/* Bottom message about Chatterbox */
+/* Bottom message about Chatterbox - BELOW the images */
 #random-images-container::after {
     content: 'Bring in some lore about these people, post it in Chatterbox Instagram page';
     display: block;
     position: absolute;
-    bottom: -40px;
+    bottom: -45px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 9px;
+    font-size: 10px;
     color: #555;
     text-align: center;
-    line-height: 1.3;
+    line-height: 1.4;
     font-style: italic;
-    max-width: 280px;
+    max-width: 300px;
     width: max-content;
 }
 
@@ -188,27 +184,27 @@ body, html {
 }
 
 #music-toggle {
-  position: fixed;
-  bottom: 55px; /* Positioned above visitor counter */
-  left: 15px;
-  z-index: 1100;
+    position: fixed;
+    bottom: 55px;
+    left: 15px;
+    z-index: 1100;
 }
 
 #musicToggleBtn {
-  background-color: #1976d2;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  padding: 8px 14px;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
+    background-color: #1976d2;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    padding: 8px 14px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
 }
 
 #musicToggleBtn:hover {
-  background-color: #0d47a1;
+    background-color: #0d47a1;
 }
 
 /* Visitor Counter Style */
@@ -236,11 +232,11 @@ body, html {
     #task-ticker {
         padding: 8px 0;
     }
-
+    
     #ticker-text {
         font-size: 13px;
     }
-
+    
     #overlay { 
         padding: 35px 20px 30px 20px; 
         max-width: 90vw; 
@@ -257,8 +253,7 @@ body, html {
     }
     #random-images-container {
         gap: 10px;
-        margin-bottom: 15px;
-        margin-top: 25px;
+        margin: 30px auto 45px auto;
     }
     .profile-image {
         width: 70px;
@@ -269,13 +264,13 @@ body, html {
         max-width: 70px;
     }
     #random-images-container::before {
-        font-size: 13px;
-        top: -20px;
+        font-size: 14px;
+        top: -25px;
     }
     #random-images-container::after {
         font-size: 8px;
-        bottom: -35px;
-        max-width: 180px;
+        bottom: -40px;
+        max-width: 220px;
     }
     #visitor-counter {
         bottom: 10px;
