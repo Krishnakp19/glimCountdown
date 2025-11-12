@@ -64,7 +64,7 @@ body, html {
 .carousel-track {
     display: flex;
     gap: 15px;
-    animation: scroll-carousel 40s linear infinite;  /* FASTER: Changed from 60s */
+    animation: scroll-carousel 30s linear infinite;
     padding: 10px 0;
 }
 
@@ -95,7 +95,7 @@ body, html {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-33.333%);
     }
 }
 
@@ -236,7 +236,7 @@ body, html {
     border-radius: 12px;
 }
 
-/* Control Buttons Container */
+/* Control Buttons Container (Bottom Left) */
 #control-buttons {
     position: fixed;
     bottom: 15px;
@@ -294,7 +294,7 @@ body, html {
     display: block;
 }
 
-/* Birthday Section */
+/* Birthday Section - Bottom Right */
 #birthday-container {
     position: fixed;
     bottom: 20px;
@@ -362,7 +362,7 @@ body, html {
     word-wrap: break-word;
 }
 
-/* Responsive */
+/* Responsive adjustments */
 @media (max-width: 600px) {
     #task-ticker {
         padding: 8px 0;
@@ -384,7 +384,7 @@ body, html {
     
     .carousel-track {
         gap: 10px;
-        animation: scroll-carousel 30s linear infinite;  /* Even faster on mobile */
+        animation: scroll-carousel 20s linear infinite;
     }
     
     #people-of-day-section {
