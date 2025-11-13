@@ -6,10 +6,12 @@ window.addEventListener('DOMContentLoaded', () => {
     audio.play().catch(() => {
       const btn = document.createElement('button');
       btn.textContent = 'Play Background Music';
-      btn.style.position = 'fixed';
-      btn.style.top = '10px';
-      btn.style.right = '10px';
-      btn.style.zIndex = '10000';
+      Object.assign(btn.style, {
+        position: 'fixed',
+        top: '10px',
+        right: '10px',
+        zIndex: '10000'
+      });
       document.body.appendChild(btn);
 
       btn.addEventListener('click', () => {
