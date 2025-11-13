@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
@@ -16,7 +17,7 @@
         <source src="Static/background.mp4" type="video/mp4">
     </video>
 
-    <!-- Background Audio -->
+    <!-- Background Audio (hidden) -->
     <audio id="backgroundAudio" loop>
         <source src="Static/background-music.mp3" type="audio/mpeg">
     </audio>
@@ -33,32 +34,64 @@
         </div>
     </div>
 
-    <!-- Countdown Overlay (Perfectly Centered) -->
+    <!-- People of the Day - OUTSIDE overlay, positioned above it 
+    <div id="people-of-day-section">
+        <div id="people-title">People of the Day</div>
+        <div id="random-images-container"></div>
+        <div id="people-message">Bring in some lore about these people, post it in Chatterbox Instagram page</div>
+    </div> -->
+
+    <!-- Countdown Overlay (Center) -->
     <div id="overlay">
-        <div id="line1">PGPM 2025-2026 has got</div>
+        <div id="line1">You have got</div>
         <div id="line2">Loading...</div>
         <div id="line3">left at GLIM Chennai</div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+        <!--div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0% Completed</div>
+        </div>
+    </div-->
     </div>
 
-    <!-- Corner Video (Always Foreground) -->
+    <!-- Birthday Container (Bottom Right) 
+    <div id="birthday-container">
+        <div id="birthday-title">🎉 Birthday Today! 🎉</div>
+        <div id="birthday-images"></div>
+    </div> -->
+
+    <!-- Corner Video (Bouncing around screen) -->
     <div id="cornerVideoContainer">
         <video id="cornerVideo" autoplay loop muted playsinline>
             <source src="Static/Roshan.mp4" type="video/mp4">
         </video>
     </div>
 
-    <!-- Control Buttons (Bottom Left) -->
+    <!-- Control Buttons Container (Bottom Left) -->
     <div id="control-buttons">
         <button id="musicToggleBtn">🔇 Muted</button>
         <button id="confettiBtn">🎉 Confetti</button>
     </div>
 
-    <!-- JS Plugins -->
+    <!-- Visitor Counter 
+    <div id="visitor-counter">
+        <img src="https://hits.sh/krishnakp19.github.io/glimCountdown.svg?style=flat&label=Visitors&color=1976d2&labelColor=2c3e50" 
+             alt="Visitor count">
+    </div> -->
+
+    <!-- Scripts -->
     <script src="countdown.js"></script>
+    <!--script src="imageSelector.js"></script--> 
     <script src="videoAnimation.js"></script>
     <script src="taskTicker.js"></script>
+    <!--script src="birthdayDisplay.js"></script-->
     <script src="backgroundAudioControl.js"></script>
     <script src="confetti.js"></script>
     <script src="carousel.js"></script>
+    <!--script src="progressBar.js"></script-->
 </body>
 </html>
