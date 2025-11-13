@@ -1,7 +1,9 @@
 (() => {
   const targetDate = new Date('2026-04-10T16:00:00');
 
-  function pad(num) { return num.toString().padStart(2, '0'); }
+  function pad(num) {
+    return num.toString().padStart(2, '0');
+  }
 
   function updateCountdown() {
     const now = new Date();
@@ -19,7 +21,6 @@
     }
 
     const days = Math.floor((targetDate - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / (1000 * 60 * 60 * 24)) + 1;
-
     const totalSecs = Math.floor(diff / 1000);
     const hours = Math.floor((totalSecs % 86400) / 3600);
     const minutes = Math.floor((totalSecs % 3600) / 60);
