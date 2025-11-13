@@ -1,39 +1,23 @@
 window.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById('backgroundAudio');
-    const musicBtn = document.getElementById('musicToggleBtn');
-    
-    // Start muted
-    audio.muted = true;
-    audio.volume = 0.7; // Set volume to 70%
-    
-    if (musicBtn) {
-        // Set initial icon to muted
-        musicBtn.textContent = '🔇 Muted';
-        
-        musicBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                // Play and unmute
-                audio.muted = false;
-                audio.play().then(() => {
-                    musicBtn.textContent = '🔊 Music';
-                }).catch(error => {
-                    console.error('Error playing audio:', error);
-                    musicBtn.textContent = '🔇 Click to Play';
-                });
-            } else {
-                // Toggle mute/unmute
-                audio.muted = !audio.muted;
-                if (audio.muted) {
-                    musicBtn.textContent = '🔇 Muted';
-                } else {
-                    musicBtn.textContent = '🔊 Music';
-                }
-            }
-        });
-        
-        // Auto-start audio (muted) to enable later unmuting
-        audio.play().catch(() => {
-            console.log('Autoplay prevented, waiting for user interaction');
-        });
-    }
+  const audio = document.getElementById('backgroundAudio');
+
+  function tryPlay() {
+    audio.muted = false;
+    audio.play().catch(() => {
+      const btn = document.createElement('button');
+      btn.textContent = 'Play Background Music';
+      btn.style.position = 'fixed';
+      btn.style.top = '10px';
+      btn.style.right = '10px';
+      btn.style.zIndex = '10000';
+      document.body.appendChild(btn);
+
+      btn.addEventListener('click', () => {
+        audio.play();
+        btn.remove();
+      });
+    });
+  }
+
+  tryPlay();
 });
